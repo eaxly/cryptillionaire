@@ -131,11 +131,11 @@ def sell_crypto():
 
     #Removing Crypto from Account
 
-    selling = int(selling) - int(sell_amount)
-    if int(selling) < 0:
+    selling = float(selling) - float(sell_amount)
+    if float(selling) < 0:
         print("Not enough Crypto!")
-        selling = int(selling) + int(sell_amount)
-    elif int(selling) > 0:
+        selling = float(selling) + float(sell_amount)
+    elif float(selling) > 0:
             time.sleep(1)
             input("Press ENTER to confirm sell...")
             f_confirm_sell_save = open(save_file_sell, 'w')
