@@ -4,8 +4,8 @@ import os.path
 import requests
 from bs4 import BeautifulSoup
 import time
-# import html2text
 from crypto_prices import crypto
+# import html2text
 
 
 main_run_path = os.path.dirname(os.path.abspath(__file__))
