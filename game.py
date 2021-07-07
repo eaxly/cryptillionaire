@@ -1,11 +1,10 @@
 import time
-import os
 import os.path
 import requests
 from bs4 import BeautifulSoup
 import time
+# import os
 # import html2text
-from crypto_prices import crypto
 
 
 main_run_path = os.path.dirname(os.path.abspath(__file__))
@@ -41,7 +40,7 @@ def show_cypto():
     price_btc = soup.find("div", {"class": "priceValue___11gHJ"})
 
     print("Bitcoin: ")
-    print(crypto.bitcoin_price + "\n")
+    print(price_btc.text + "\n")
 
 
     #Ethereum Stats
@@ -51,7 +50,7 @@ def show_cypto():
     price_eth = soup.find("div", {"class": "priceValue___11gHJ"})
 
     print("Ethereum: ")
-    print(cypto.ethereum_price + "\n")
+    print(price_eth.text + "\n")
 
 
     #Binance Coin Stats
@@ -61,7 +60,7 @@ def show_cypto():
     price_bnb = soup.find("div", {"class": "priceValue___11gHJ"})
 
     print("Binance Coin: ")
-    print(crypto.binance_price + "\n")
+    print(price_bnb.text + "\n")
 
 
     #Tether Stats
