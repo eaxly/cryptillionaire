@@ -1,8 +1,13 @@
-import time
 import os.path
+import time
+
 import requests
 from bs4 import BeautifulSoup
-from . str2float import str2float
+
+# if this is showing a warning, ignore it, this is a pylance/vscode issue
+# the program runs fine! \__(· _ · )__/
+from str2float import str2float
+
 # import os
 # import html2text
 
