@@ -2,8 +2,7 @@ import time
 import os.path
 import requests
 from bs4 import BeautifulSoup
-import time
-from .str2float import str2float
+from . str2float import str2float
 # import os
 # import html2text
 
