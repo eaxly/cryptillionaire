@@ -38,7 +38,6 @@ def tutorial():
         print("Finalizing...")
         time.sleep(2)
         f = open(saves_path_main + "/tutorial.txt", 'w+')
-        f.close()
         f.write("Tutorial is Done")
         f.close()
         print("Please Restart your Game to let it finish setting up")
