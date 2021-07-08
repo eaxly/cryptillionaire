@@ -12,7 +12,7 @@ main_run_path = os.path.dirname(os.path.abspath(__file__))
 
 print("Debug Info:")
 print(main_run_path)
-
+os.mkdir(main_run_path + "/saves/")
 saves_path_main = main_run_path + "/saves/"
 
 def tutorial():
@@ -24,7 +24,18 @@ def tutorial():
     time.sleep(0.5)
     tutorial_answer = input("Have you read the Text above? \n Hint: type YES to procede: ")
     if tutorial_answer == "YES":
-        f = open("./saves/tutorial.txt", 'a')
+        os.mkdir(main_run_path + "/saves/")
+        time.sleep(1)
+        print("Making Saves Folder...")
+        time.sleep(3)
+        f_money_setup = open(saves_path_main + "/money.txt", 'w+')
+        print("Adding Money to Bank Account...")
+        time.sleep(2)
+        f_money_setup.write("1000")
+        f_money_setup.close()
+        print("Finalizing...")
+        time.sleep(2)
+        f = open(saves_path_main + "/tutorial.txt", 'w+')
         f.write("Tutorial is Done")
         f.close()
         print("Please Restart your Game to let it finish setting up")
