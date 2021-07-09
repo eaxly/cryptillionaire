@@ -1,8 +1,6 @@
 import time
 import os
 import os.path
-import requests
-from bs4 import BeautifulSoup
 import crypto
 
 main_run_path = os.path.dirname(os.path.abspath(__file__))
