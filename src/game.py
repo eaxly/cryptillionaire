@@ -5,7 +5,7 @@ import crypto
 # if this is showing a warning, ignore it, this is a pylance/vscode issue
 # the program runs fine! \__(· _ · )__/
 from str2float import str2float
-
+import filer
 # import os
 # import html2text
 
@@ -27,7 +27,7 @@ def tutorial():
     time.sleep(0.5)
     tutorial_answer = input(
         "Have you read the Text above? \n Hint: type YES to procede: ")
-    if tutorial_answer == "YES":
+    if tutorial_answer == "YES" or "yes" or "y" or "Y":
         os.mkdir(main_run_path + "/saves/")
         time.sleep(1)
         print("Making Saves Folder...")
@@ -66,22 +66,35 @@ def show_cypto():
 def sell_crypto():
     print("What Crypto do you want to sell?")
     time.sleep(1)
+    # we need to create the variables so that they don't go out of scope in the statements below ↓
+    f_btc, btc_owned, f_eth, eth_owned, f_binance, binance_owned, f_tether, tether_owned = \
+        "", "", "", "", "", "", "", ""
 
-    f_btc = open(saves_path_main + "bitcoin.txt", 'r+')
-    btc_owned = f_btc.read()
-    f_btc.close()
+    p_btc = saves_path_main + "bitcoin.txt"
+    p_eth = saves_path_main + "ethereum.txt"
+    p_binance = saves_path_main + "binance.txt"
+    p_tether = saves_path_main + "tether.txt"
 
-    f_eth = open(saves_path_main + "ethereum.txt", 'r+')
-    eth_owned = f_eth.read()
-    f_eth.close()
+    # ik very ugly but it should work
+    if filer.filing(p_btc):
+        btc_owned = filer.read_file(p_btc)
+    elif filer.filing(p_btc, create_file=True):
+        btc_owned = filer.read_file(p_btc)
 
-    f_binance = open(saves_path_main + "binance.txt", 'r+')
-    binance_owned = f_binance.read()
-    f_binance.close()
-    
-    f_tether = open(saves_path_main + "tether.txt", 'r+')
-    tether_owned = f_tether.read()
-    f_tether.close()
+    if filer.filing(p_eth):
+        eth_owned = filer.read_file(p_eth)
+    elif filer.filing(p_eth, True):
+        eth_owned = filer.read_file(p_eth)
+
+    if filer.filing(p_binance):
+        binance_owned = filer.read_file(p_binance)
+    elif filer.filing(p_binance, create_file=True):
+        binance_owned = filer.read_file(p_binance)
+
+    if filer.filing(p_tether):
+        tether_owned = filer.read_file(p_tether)
+    elif filer.filing(p_tether, create_file=True):
+        tether_owned = filer.read_file(p_tether)
 
     print("1. Bitcoin:")
     print("Owned: " + btc_owned + "\n")
@@ -97,6 +110,7 @@ def sell_crypto():
 
     sell_choice = input(": ")
     selling_name = ""
+    selling = ""
     if sell_choice == "1":
         selling_name = "Bitcoin"
         selling = btc_owned
@@ -116,7 +130,7 @@ def sell_crypto():
 
     time.sleep(2)
     print("Selected: " + selling_name + "\n" + "Owned: " + selling)
-    print("How much to sell of crypto?")
+    print(f"How much {selling_name} to sell?")
     sell_amount = str2float(input(": "))
 
     # Removing Crypto from Account
@@ -142,7 +156,7 @@ def sell_crypto():
             price_current_sell = str2float(crypto.binance_owned())
         elif sell_choice == "4":
             price_current_sell = str2float(crypto.tether_price())
-          
+
 
         money_adding_sell = price_current_sell * sell_amount
 
@@ -153,7 +167,7 @@ def sell_crypto():
         f_money_sell = open(saves_path_main + "money.txt", "w")
         f_money_sell.write(str(money_sell_bank + money_adding_sell))
         f_money_sell.close()
-        
+
         print("You got: $" + str(money_adding_sell + money_sell_bank) +
               "\n" + "from selling: " + str(sell_amount) + " " + selling_name)
 
@@ -177,11 +191,11 @@ def main_menu():
     if menu_choice == "1":
         show_cypto()
         input("Press enter to exit...")
-    
+
     if menu_choice == "2":
         sell_crypto()
         input("Press enter to exit...")
-    
+
     if menu_choice == "3":
         print("Work in progress")
 
