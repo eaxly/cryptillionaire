@@ -1,5 +1,4 @@
 import time
-import os
 import os.path
 import crypto
 
