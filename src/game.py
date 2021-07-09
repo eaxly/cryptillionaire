@@ -154,8 +154,7 @@ def sell_crypto():
         f_money_sell.write(str(money_sell_bank + money_adding_sell))
         f_money_sell.close()
         
-        print("You got: $" + str(money_adding_sell + money_sell_bank) +
-              "\n" + "from selling: " + str(sell_amount) + " " + selling_name)
+        print(f"You got ${str(money_adding_sell)} from selling {str(sell_amount)} {selling_name}")
 
 
 def main_menu():
