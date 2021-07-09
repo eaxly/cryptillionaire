@@ -1,8 +1,6 @@
-import os.path
 import time
-
-import requests
-from bs4 import BeautifulSoup
+import os.path
+import crypto
 
 # if this is showing a warning, ignore it, this is a pylance/vscode issue
 # the program runs fine! \__(· _ · )__/
@@ -48,41 +46,21 @@ def tutorial():
 
 
 def show_cypto():
-    # Bitcoin Stats
-    url_btc = "https://coinmarketcap.com/currencies/bitcoin/markets/"
-    req = requests.get(url_btc)
-    soup = BeautifulSoup(req.content, 'html.parser')
-    price_btc = soup.find("div", {"class": "priceValue___11gHJ"})
-
+    #Bitcoin Stats
     print("Bitcoin: ")
-    print(price_btc.text + "\n")
+    print(crypto.bitcoin_price() + "\n")
 
-    # Ethereum Stats
-    url_eth = "https://coinmarketcap.com/currencies/ethereum/"
-    req = requests.get(url_eth)
-    soup = BeautifulSoup(req.content, 'html.parser')
-    price_eth = soup.find("div", {"class": "priceValue___11gHJ"})
-
+    #Ethereum Stats
     print("Ethereum: ")
-    print(price_eth.text + "\n")
+    print(crypto.ethereum_price() + "\n")
 
-    # Binance Coin Stats
-    url_bnb = "https://coinmarketcap.com/currencies/binance-coin/"
-    req = requests.get(url_bnb)
-    soup = BeautifulSoup(req.content, 'html.parser')
-    price_bnb = soup.find("div", {"class": "priceValue___11gHJ"})
-
+    #Binance Coin Stats
     print("Binance Coin: ")
-    print(price_bnb.text + "\n")
+    print(crypto.binance_price() + "\n")
 
-    # Tether Stats
-    url_usdt = "https://coinmarketcap.com/currencies/tether/"
-    req = requests.get(url_usdt)
-    soup = BeautifulSoup(req.content, 'html.parser')
-    price_usdt = soup.find("div", {"class": "priceValue___11gHJ"})
-
+    #Tether Stats
     print("Tether: ")
-    print(price_usdt.text + "\n")
+    print(crypto.tether_price() + "\n")
 
 
 def sell_crypto():
@@ -155,32 +133,14 @@ def sell_crypto():
         # close the fucking files XD
         price_current_sell = 0.0
         if sell_choice == "1":
-            url_btc = "https://coinmarketcap.com/currencies/bitcoin/markets/"
-            req = requests.get(url_btc)
-            soup = BeautifulSoup(req.content, 'html.parser')
-            price_btc = soup.find("div", {"class": "priceValue___11gHJ"})
-            price_current_sell = str2float(price_btc.text)
-
+            price_current_sell = crypto.bitcoin_price()
         elif sell_choice == "2":
-            url_eth = "https://coinmarketcap.com/currencies/ethereum/"
-            req = requests.get(url_eth)
-            soup = BeautifulSoup(req.content, 'html.parser')
-            price_eth = soup.find("div", {"class": "priceValue___11gHJ"})
-            price_current_sell = str2float(price_eth.text)
-
+            price_current_sell = crypto.ethereum_price()
         elif sell_choice == "3":
-            url_bnb = "https://coinmarketcap.com/currencies/binance-coin/"
-            req = requests.get(url_bnb)
-            soup = BeautifulSoup(req.content, 'html.parser')
-            price_bnb = soup.find("div", {"class": "priceValue___11gHJ"})
-            price_current_sell = str2float(price_bnb.text)
-
+            price_current_sell = crypto.binance_owned()
         elif sell_choice == "4":
-            url_usdt = "https://coinmarketcap.com/currencies/tether/"
-            req = requests.get(url_usdt)
-            soup = BeautifulSoup(req.content, 'html.parser')
-            price_usdt = soup.find("div", {"class": "priceValue___11gHJ"})
-            price_current_sell = str2float(price_usdt.text)
+            price_current_sell = crypto.tether_price()
+          
 
         money_adding_sell = price_current_sell * sell_amount
 
