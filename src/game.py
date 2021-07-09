@@ -133,13 +133,13 @@ def sell_crypto():
         # close the fucking files XD
         price_current_sell = 0.0
         if sell_choice == "1":
-            price_current_sell = crypto.bitcoin_price()
+            price_current_sell = str2float(crypto.bitcoin_price())
         elif sell_choice == "2":
-            price_current_sell = crypto.ethereum_price()
+            price_current_sell = str2float(crypto.ethereum_price())
         elif sell_choice == "3":
-            price_current_sell = crypto.binance_owned()
+            price_current_sell = str2float(crypto.binance_owned())
         elif sell_choice == "4":
-            price_current_sell = crypto.tether_price()
+            price_current_sell = str2float(crypto.tether_price())
           
 
         money_adding_sell = price_current_sell * sell_amount
