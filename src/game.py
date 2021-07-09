@@ -77,9 +77,11 @@ def sell_crypto():
 
     f_binance = open(saves_path_main + "binance.txt", 'r+')
     binance_owned = f_binance.read()
-
+    f_binance.close()
+    
     f_tether = open(saves_path_main + "tether.txt", 'r+')
     tether_owned = f_tether.read()
+    f_tether.close()
 
     print("1. Bitcoin:")
     print("Owned: " + btc_owned + "\n")
