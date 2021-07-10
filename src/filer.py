@@ -12,6 +12,7 @@ def filing(file_path_str: str, create_file: bool = False, write_contents: str = 
     Returns:
         bool: True if file exists, False if didn't and was created
     """
+    
     file_path_str = Path(file_path_str)
     if file_path_str.is_file():
         return True
@@ -33,6 +34,7 @@ def read_file(file_path: str) -> str:
     Returns:
         str: The contents of the file
     """
+
     with open(file_path, 'r') as f:
         f_contents = f.read()
         f.close()
