@@ -25,6 +25,14 @@ def filing(file_path_str: str, create_file: bool = False, write_contents: str = 
     return False
         
 def read_file(file_path: str) -> str:
+    """Read the contents of a file and return them.
+
+    Args:
+        file_path (str): The path to the file to be read
+
+    Returns:
+        str: The contents of the file
+    """
     with open(file_path, 'r') as f:
         f_contents = f.read()
         f.close()
