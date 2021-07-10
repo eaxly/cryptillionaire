@@ -1,9 +1,7 @@
 import time
 import os.path
 import crypto
-from datetime import date, datetime
-
-
+from datetime import datetime
 
 # if this is showing a warning, ignore it, this is a pylance/vscode issue
 # the program runs fine! \__(· _ · )__/
