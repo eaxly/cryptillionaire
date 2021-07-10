@@ -7,8 +7,6 @@ from datetime import datetime
 # the program runs fine! \__(· _ · )__/
 from str2float import str2float
 import filer
-# import os
-# import html2text
 
 
 main_run_path = os.path.dirname(os.path.abspath(__file__))
