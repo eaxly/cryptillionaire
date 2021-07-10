@@ -25,7 +25,7 @@ def tutorial():
     print("You are starting with 1000$ and work your way up to be the next millionaire")
     time.sleep(0.5)
     tutorial_answer = input(
-        "Have you read the Text above? \n Hint: type YES to procede: ")
+        "Have you read the Text above? \nHint: type YES to procede: ")
     if tutorial_answer == "YES" or "yes" or "y" or "Y":
         os.mkdir(main_run_path + "/saves/")
         time.sleep(1)
@@ -214,7 +214,7 @@ def main_menu():
         exit()
 
 
-if os.path.isfile(saves_path_main + "tutorial.txt"):
+if filer.filing(saves_path_main + "tutorial.txt", create_file=False):
     main_menu()
 else:
     tutorial()
