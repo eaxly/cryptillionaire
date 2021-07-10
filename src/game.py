@@ -1,6 +1,9 @@
 import time
 import os.path
 import crypto
+from datetime import date, datetime
+
+
 
 # if this is showing a warning, ignore it, this is a pylance/vscode issue
 # the program runs fine! \__(· _ · )__/
@@ -42,6 +45,9 @@ def tutorial():
         f = open(saves_path_main + "/tutorial.txt", 'w+')
         f.write("Tutorial is Done")
         f.close()
+        f_history_setup = open(saves_path_main + "/history.txt", 'w+')
+        f_history_setup.write(str(datetime.now()) + "  Installed Cryptillionaire \n" )
+        f_history_setup.close()
         print("Please Restart your Game to let it finish setting up")
 
 
@@ -169,7 +175,12 @@ def sell_crypto():
         f_money_sell.close()
         
         print(f"You got ${str(money_adding_sell)} from selling {str(sell_amount)} {selling_name}")
-
+        f_history = open(saves_path_main + "/history.txt", 'a')
+        f_history.write(str(datetime.now()) + f" : Sold {sell_amount} {selling_name} for {money_adding_sell}\n" )
+        f_history.close()
+        
+        
+        
 
 def main_menu():
     print("Welcome to Cryptillionaire")
