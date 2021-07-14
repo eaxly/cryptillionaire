@@ -175,6 +175,10 @@ def sell_crypto():
         f_history.write(str(datetime.now()) + f" : Sold {sell_amount} {selling_name} for {money_adding_sell}\n" )
         f_history.close()
         
+def show_history():
+    f_show_history = open(saves_path_main + "/history.txt", 'r')
+    for line in f_show_history:
+        print(line)
         
         
 
@@ -206,7 +210,7 @@ def main_menu():
         print("Work in progress")
 
     if menu_choice == "4":
-        print("Work in progress")
+        show_history()
 
     if menu_choice == "5":
         print("Exiting...")
