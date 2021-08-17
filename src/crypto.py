@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-#* the '-> str' at the end of each function specifies that this function returns a string.
+# NOTE(axolotl): the '-> str' at the end of each function specifies that this function returns a string.
 
 def bitcoin_price() -> str:
     url_btc = "https://coinmarketcap.com/currencies/bitcoin/markets/"

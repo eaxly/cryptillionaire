@@ -1,5 +1,5 @@
 import time
-import os.path
+import os
 import crypto
 from datetime import datetime
 
@@ -26,6 +26,7 @@ def tutorial():
     time.sleep(0.5)
     tutorial_answer = input(
         "Have you read the Text above? \nHint: type YES to procede: ")
+
     if tutorial_answer == "YES" or "yes" or "y" or "Y":
         os.mkdir(main_run_path + "/saves/")
         time.sleep(1)
@@ -68,9 +69,9 @@ def show_cypto():
 def sell_crypto():
     print("What Crypto do you want to sell?")
     time.sleep(1)
+    # uglyyyyyyy
     # we need to create the variables so that they don't go out of scope in the statements below ↓
-    f_btc, btc_owned, f_eth, eth_owned, f_binance, binance_owned, f_tether, tether_owned = \
-        "", "", "", "", "", "", "", ""
+    btc_owned, eth_owned, binance_owned, tether_owned = "","","",""
 
     p_btc = saves_path_main + "bitcoin.txt"
     p_eth = saves_path_main + "ethereum.txt"
@@ -113,6 +114,7 @@ def sell_crypto():
     sell_choice = input(": ")
     selling_name = ""
     selling = ""
+    save_file_sell = ""
     if sell_choice == "1":
         selling_name = "Bitcoin"
         selling = btc_owned
@@ -136,18 +138,19 @@ def sell_crypto():
     sell_amount = str2float(input(": "))
 
     # Removing Crypto from Account
-
-    selling = float(selling) - float(sell_amount)
-    if float(selling) < 0:
+    # selling = float(selling) - float(sell_amount) <- what is this?!
+    if float(selling) - float(sell_amount):
         print("Not enough Crypto!")
         selling = float(selling) + float(sell_amount)
 
-    elif float(selling) >= 0:
+    elif float(selling) - float(sell_amount) >= 0:
+        selling = float(selling) - float(sell_amount)
         time.sleep(1)
         input("Press ENTER to confirm sell...")
         f_confirm_sell_save = open(save_file_sell, 'w')
         f_confirm_sell_save.write(str(selling))
         f_confirm_sell_save.close()
+
         # close the fucking files XD
         price_current_sell = 0.0
         if sell_choice == "1":
@@ -155,7 +158,7 @@ def sell_crypto():
         elif sell_choice == "2":
             price_current_sell = str2float(crypto.ethereum_price())
         elif sell_choice == "3":
-            price_current_sell = str2float(crypto.binance_owned())
+            price_current_sell = str2float(crypto.binance_price())
         elif sell_choice == "4":
             price_current_sell = str2float(crypto.tether_price())
 
