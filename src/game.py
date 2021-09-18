@@ -20,9 +20,9 @@ saves_path_main = main_run_path + "/saves/"
 def tutorial():
     print("Welcome to Cryptillionaire")
     time.sleep(0.5)
-    print("In this game you need to invest into Crypto to get MONEY (§)\nby trading it")
+    print("In this game you need to invest into Crypto to get MONEY (€)\nby trading it")
     time.sleep(0.5)
-    print("You are starting with 1000$ and work your way up to be the next millionaire")
+    print("You are starting with 1000€ and work your way up to be the next millionaire")
     time.sleep(0.5)
     tutorial_answer = input(
         "Have you read the Text above? \nHint: type YES to procede: ")
@@ -173,7 +173,7 @@ def sell_crypto():
         f_money_sell.write(str(money_sell_bank + money_adding_sell))
         f_money_sell.close()
         
-        print(f"You got ${str(money_adding_sell)} from selling {str(sell_amount)} {selling_name}")
+        print(f"You got €{str(money_adding_sell)} from selling {str(sell_amount)} {selling_name}")
         f_history = open(saves_path_main + "/history.txt", 'a')
         f_history.write(str(datetime.now()) + f" : Sold {sell_amount} {selling_name} for {money_adding_sell}\n" )
         f_history.close()
@@ -281,7 +281,7 @@ def buy_crypto():
 
     elif float(money_bank) - float(price_crypto) >= 0:
         time.sleep(1)
-        print(f"INFO: Buying {buy_amount} {buying_name} for {price_crypto} $")
+        print(f"INFO: Buying {buy_amount} {buying_name} for {price_crypto} €")
         time.sleep(3)
         input("Press ENTER to confirm sell...")
 
