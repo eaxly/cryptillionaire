@@ -178,12 +178,134 @@ def sell_crypto():
         f_history.write(str(datetime.now()) + f" : Sold {sell_amount} {selling_name} for {money_adding_sell}\n" )
         f_history.close()
         
+
+        
 def show_history():
     f_show_history = open(saves_path_main + "/history.txt", 'r')
     for line in f_show_history:
         print(line)
+    input("Press ENTER to return to Main Menu")
         
-        
+
+
+def buy_crypto():
+    print("Select Cryptocurrency:")
+    print("1. Bitcoin")
+    print(f"Price: {crypto.bitcoin_price()}")
+    print("2. Ethereum")
+    print(f"Price: {crypto.ethereum_price()}")
+    print("3. Binance")
+    print(f"Price: {crypto.binance_price()}")
+    print("4. Tether")
+    print(f"Price: {crypto.tether_price()}")
+
+
+    btc_owned, eth_owned, binance_owned, tether_owned = "","","",""
+
+    p_btc = saves_path_main + "bitcoin.txt"
+    p_eth = saves_path_main + "ethereum.txt"
+    p_binance = saves_path_main + "binance.txt"
+    p_tether = saves_path_main + "tether.txt"
+
+    # ik very ugly but it should work x2
+    if filer.filing(p_btc):
+        btc_owned = filer.read_file(p_btc)
+    elif filer.filing(p_btc, create_file=True):
+        btc_owned = filer.read_file(p_btc)
+
+    if filer.filing(p_eth):
+        eth_owned = filer.read_file(p_eth)
+    elif filer.filing(p_eth, True):
+        eth_owned = filer.read_file(p_eth)
+
+    if filer.filing(p_binance):
+        binance_owned = filer.read_file(p_binance)
+    elif filer.filing(p_binance, create_file=True):
+        binance_owned = filer.read_file(p_binance)
+
+    if filer.filing(p_tether):
+        tether_owned = filer.read_file(p_tether)
+    elif filer.filing(p_tether, create_file=True):
+        tether_owned = filer.read_file(p_tether)
+
+    buy_choice = input(": ")
+
+    #Just some declarations
+    buying_name = ""
+    buying = ""
+    save_file_buy = ""
+
+    if buy_choice == "1":
+        price_crypto = crypto.bitcoin_price() 
+        buying_name = "Bitcoin"
+        buying = btc_owned
+        save_file_buy = saves_path_main + "bitcoin.txt"
+    if buy_choice == "2":
+        price_crypto = crypto.ethereum_price()
+        buying_name = "Ethereum"
+        buying = eth_owned
+        save_file_buy = saves_path_main + "ethereum.txt"
+    if buy_choice == "3":
+        price_crypto = crypto.binance_price()
+        buying_name = "Binance"
+        buying = binance_owned
+        save_file_buy = saves_path_main + "binance.txt"
+    if buy_choice == "4":
+        price_crypto = crypto.tether_price()
+        buying_name = "Tether"
+        buying = tether_owned
+        save_file_buy = saves_path_main + "tether.txt"
+    else:
+        print("Selection not Valid!")
+        time.sleep(1)
+        print("Exiting to Main Menu!")
+        time.sleep(2)
+        main_menu()
+
+    time.sleep(2)
+    print("Selected: " + buying_name + "\n" + "Owned: " + buying)
+    print(f"How much {buying_name} to Buy?")
+    buy_amount = str2float(input(": "))
+
+
+    f_money_buy = open(saves_path_main + "money.txt", 'r')
+    money_bank = str2float(f_money_buy.read())
+    f_money_buy.close()
+    price_crypto = price_crypto.replace("$", "")
+
+    if float(money_bank) - float(price_crypto) < 0:
+        print("Not enough Money!")
+        print("Exiting to Main Menu!")
+        time.sleep(3)
+        main_menu()
+
+    elif float(money_bank) - float(price_crypto) >= 0:
+        time.sleep(1)
+        print(f"INFO: Buying {buy_amount} {buying_name} for {price_crypto} $")
+        time.sleep(3)
+        input("Press ENTER to confirm sell...")
+
+
+        money_removing_buy = float(price_crypto) * float(buy_amount)
+
+
+        f_money_buy = open(saves_path_main + "money.txt", "w")
+        f_money_buy.write(str(money_bank - money_removing_buy))
+        f_money_buy.close()
+
+        crypto_add_buy = open(save_file_buy, "w")
+        crypto_add_buy.write(str(float(buy_amount) + float(buying)))
+        crypto_add_buy.close()
+        print("Buy Process Succedeed! \n Exiting to Main Menu!")
+        time.sleep(2)
+        main_menu()
+
+
+
+
+
+
+
 
 def main_menu():
     print("Welcome to Cryptillionaire")
@@ -203,14 +325,16 @@ def main_menu():
     menu_choice = input("\n: ")
     if menu_choice == "1":
         show_cypto()
-        input("Press enter to exit...")
+        input("Press ENTER to return to Main Menu")
+        main_menu()
 
     if menu_choice == "2":
         sell_crypto()
-        input("Press enter to exit...")
+        input("Press ENTER to return to Main Menu")
+        main_menu()
 
     if menu_choice == "3":
-        print("Work in progress")
+        buy_crypto()
 
     if menu_choice == "4":
         show_history()
