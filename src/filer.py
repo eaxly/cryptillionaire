@@ -1,8 +1,8 @@
 # Filer is a small utility script that can do things related to files. (that is why it is called filer)
-from os import write
+# from os import write # why is this here?
 from pathlib import Path
 
-def filing(file_path_str: str, create_file: bool = False, write_contents: str = "0") -> bool:
+def filing(file_path_str: str, create_file: bool = False, write_contents: str = "0") -> bool or int:
     """filing: Check if a file exists, create it on specification
 
     Args:
@@ -10,11 +10,11 @@ def filing(file_path_str: str, create_file: bool = False, write_contents: str = 
         create_file (bool, optional): If file_path_str does not exist, create it. Defaults to False.
 
     Returns:
-        bool: True if file exists, False if didn't and was created
+        bool: True if file exists, False if didn't and if specified, was created
     """
     
-    file_path_str = Path(file_path_str)
-    if file_path_str.is_file():
+    file_path = Path(file_path_str)
+    if file_path.is_file():
         return True
     
     elif create_file:
