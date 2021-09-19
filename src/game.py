@@ -300,7 +300,9 @@ def buy_crypto():
         time.sleep(2)
         main_menu()
 
-
+        f_history = open(saves_path_main + "/history.txt", 'a')
+        f_history.write(str(datetime.now()) + f" : Brought {buy_amount} {buying_name} for {money_removing_buy}\n" )
+        f_history.close()
 
 
 
