@@ -65,7 +65,7 @@ def show_cypto():
 
     #Binance Coin Stats
     print("Binance Coin: ")
-   console.print(f"[bold underline]{crypto.binance_price()}[/]\n")
+    console.print(f"[bold underline]{crypto.binance_price()}[/]\n")
 
     #Tether Stats
     print("Tether: ")
@@ -191,7 +191,7 @@ def show_history():
     f_show_history = open(saves_path_main + "/history.txt", 'r')
     for line in f_show_history:
         print(line)
-    console.perint("Press [bold]ENTER[/] to return to Main Menu")
+    console.print("Press [bold]ENTER[/] to return to Main Menu")
     input()
 
 
