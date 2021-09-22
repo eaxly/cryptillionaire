@@ -2,6 +2,7 @@ import time
 import os
 import crypto
 from datetime import datetime
+from rich import print
 
 # if this is showing a warning, ignore it, this is a pylance/vscode issue
 # the program runs fine! \__(· _ · )__/
