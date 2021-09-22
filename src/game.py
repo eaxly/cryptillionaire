@@ -2,7 +2,12 @@ import time
 import os
 import crypto
 from datetime import datetime
+# rich libaries
 from rich import print
+from rich.console import Console
+
+console = Console()
+
 
 # if this is showing a warning, ignore it, this is a pylance/vscode issue
 # the program runs fine! \__(· _ · )__/
@@ -52,19 +57,19 @@ def tutorial():
 def show_cypto():
     #Bitcoin Stats
     print("Bitcoin: ")
-    print(crypto.bitcoin_price() + "\n")
+    console.print(f"[bold underline]{crypto.bitcoin_price()}[/]\n")
 
     #Ethereum Stats
     print("Ethereum: ")
-    print(crypto.ethereum_price() + "\n")
+    console.print(f"[bold underline]{crypto.ethereum_price()}[/]\n")
 
     #Binance Coin Stats
     print("Binance Coin: ")
-    print(crypto.binance_price() + "\n")
+   console.print(f"[bold underline]{crypto.binance_price()}[/]\n")
 
     #Tether Stats
     print("Tether: ")
-    print(crypto.tether_price() + "\n")
+    console.print(f"[bold underline]{crypto.tether_price()}[/]\n")
 
 
 def sell_crypto():
@@ -101,16 +106,16 @@ def sell_crypto():
         tether_owned = filer.read_file(p_tether)
 
     print("1. Bitcoin:")
-    print("Owned: " + btc_owned + "\n")
+    print(f"Owned: [underline]{btc_owned}[/]\n")
 
     print("2. Ethereum:")
-    print("Owned: " + eth_owned + "\n")
+    print(f"Owned: [underline]{eth_owned}[/]\n")
 
     print("3. Binance Coin:")
-    print("Owned: " + binance_owned + "\n")
+    print(f"Owned: [underline]{binance_owned}[/]\n")
 
     print("4. Tether:")
-    print("Owned: " + tether_owned + "\n")
+    print(f"Owned: [underline]{tether_owned}[/]\n")
 
     sell_choice = input(": ")
     selling_name = ""
@@ -135,19 +140,20 @@ def sell_crypto():
 
     time.sleep(2)
     print("Selected: " + selling_name + "\n" + "Owned: " + selling)
-    print(f"How much {selling_name} to sell?")
+    console.print(f"How much [bold]{selling_name}[/] to sell?")
     sell_amount = str2float(input(": "))
 
     # Removing Crypto from Account
     # selling = float(selling) - float(sell_amount) <- what is this?!
     if float(selling) - float(sell_amount):
-        print("Not enough Crypto!")
+        console.print("[red on white]Not enough Crypto![/]")
         selling = float(selling) + float(sell_amount)
 
     elif float(selling) - float(sell_amount) >= 0:
         selling = float(selling) - float(sell_amount)
         time.sleep(1)
-        input("Press ENTER to confirm sell...")
+        console.print("[red on white]Press ENTER to confirm sell...[/]")
+        input()
         f_confirm_sell_save = open(save_file_sell, 'w')
         f_confirm_sell_save.write(str(selling))
         f_confirm_sell_save.close()
@@ -185,20 +191,20 @@ def show_history():
     f_show_history = open(saves_path_main + "/history.txt", 'r')
     for line in f_show_history:
         print(line)
-    input("Press ENTER to return to Main Menu")
-        
+    console.perint("Press [bold]ENTER[/] to return to Main Menu")
+    input()
 
 
 def buy_crypto():
     print("Select Cryptocurrency:")
     print("1. Bitcoin")
-    print(f"Price: {crypto.bitcoin_price()}")
+    console.print(f"Price: [underline]{crypto.bitcoin_price()}[/]")
     print("2. Ethereum")
-    print(f"Price: {crypto.ethereum_price()}")
+    console.print(f"Price: [underline]{crypto.ethereum_price()}[/]")
     print("3. Binance")
-    print(f"Price: {crypto.binance_price()}")
+    console.print(f"Price: [underline]{crypto.binance_price()}[/]")
     print("4. Tether")
-    print(f"Price: {crypto.tether_price()}")
+    console.print(f"Price: [underline]{crypto.tether_price()}[/]")
 
 
     btc_owned, eth_owned, binance_owned, tether_owned = "","","",""
@@ -257,9 +263,9 @@ def buy_crypto():
         buying = tether_owned
         save_file_buy = saves_path_main + "tether.txt"
     else:
-        print("Selection not Valid!")
+        console.print("[red on white]Selection not Valid![/]")
         time.sleep(1)
-        print("Exiting to Main Menu!")
+        console.print("[red on white]Exiting to Main Menu![/]")
         time.sleep(2)
         main_menu()
 
