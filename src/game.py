@@ -54,7 +54,7 @@ def tutorial():
         print("Please Restart your Game to let it finish setting up")
 
 
-def show_cypto():
+def show_crypto():
     #Bitcoin Stats
     print("Bitcoin: ")
     console.print(f"[bold underline]{crypto.bitcoin_price()}[/]\n")
@@ -145,7 +145,7 @@ def sell_crypto():
 
     # Removing Crypto from Account
     # selling = float(selling) - float(sell_amount) <- what is this?!
-    if float(selling) - float(sell_amount):
+    if float(selling) - float(sell_amount) <= 0:
         console.print("[red on white]Not enough Crypto![/]")
         selling = float(selling) + float(sell_amount)
 
@@ -333,7 +333,7 @@ def main_menu():
 
     menu_choice = input("\n: ")
     if menu_choice == "1":
-        show_cypto()
+        show_crypto()
         input("Press ENTER to return to Main Menu")
         main_menu()
 
