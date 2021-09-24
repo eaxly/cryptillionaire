@@ -247,17 +247,17 @@ def buy_crypto():
         buying_name = "Bitcoin"
         buying = btc_owned
         save_file_buy = saves_path_main + "bitcoin.txt"
-    if buy_choice == "2":
+    elif buy_choice == "2":
         price_crypto = crypto.ethereum_price()
         buying_name = "Ethereum"
         buying = eth_owned
         save_file_buy = saves_path_main + "ethereum.txt"
-    if buy_choice == "3":
+    elif buy_choice == "3":
         price_crypto = crypto.binance_price()
         buying_name = "Binance"
         buying = binance_owned
         save_file_buy = saves_path_main + "binance.txt"
-    if buy_choice == "4":
+    elif buy_choice == "4":
         price_crypto = crypto.tether_price()
         buying_name = "Tether"
         buying = tether_owned
@@ -280,20 +280,20 @@ def buy_crypto():
     f_money_buy.close()
     price_crypto = price_crypto.replace("$", "")
 
-    if float(money_bank) - float(price_crypto) < 0:
+    if float(money_bank) - str2float(price_crypto) < 0:
         print("Not enough Money!")
         print("Exiting to Main Menu!")
         time.sleep(3)
         main_menu()
 
-    elif float(money_bank) - float(price_crypto) >= 0:
+    elif float(money_bank) - str2float(price_crypto) >= 0:
         time.sleep(1)
         print(f"INFO: Buying {buy_amount} {buying_name} for {price_crypto} €")
         time.sleep(3)
         input("Press ENTER to confirm sell...")
 
 
-        money_removing_buy = float(price_crypto) * float(buy_amount)
+        money_removing_buy = str2float(price_crypto) * float(buy_amount)
 
 
         f_money_buy = open(saves_path_main + "money.txt", "w")
@@ -304,12 +304,13 @@ def buy_crypto():
         crypto_add_buy.write(str(float(buy_amount) + float(buying)))
         crypto_add_buy.close()
         print("Buy Process Succedeed! \n Exiting to Main Menu!")
-        time.sleep(2)
-        main_menu()
 
         f_history = open(saves_path_main + "/history.txt", 'a')
-        f_history.write(str(datetime.now()) + f" : Brought {buy_amount} {buying_name} for {money_removing_buy}\n" )
+        f_history.write(str(datetime.now()) + f" : Bought {buy_amount} {buying_name} for {money_removing_buy}\n" )
         f_history.close()
+
+        time.sleep(2)
+        main_menu()
 
 
 
