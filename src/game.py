@@ -145,7 +145,7 @@ def sell_crypto():
 
     # Removing Crypto from Account
     # selling = float(selling) - float(sell_amount) <- what is this?!
-    if float(selling) - float(sell_amount) <= 0:
+    if float(selling) - float(sell_amount) < 0:
         console.print("[red on white]Not enough Crypto![/]")
         selling = float(selling) + float(sell_amount)
 
