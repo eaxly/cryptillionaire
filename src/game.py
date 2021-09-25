@@ -23,6 +23,9 @@ print(main_run_path)
 saves_path_main = main_run_path + "/saves/"
 
 
+def clear():
+    console.clear()
+
 def tutorial():
     print("Welcome to Cryptillionaire")
     time.sleep(0.5)
@@ -318,6 +321,7 @@ def buy_crypto():
 
 
 def main_menu():
+    clear()
     print("Welcome to Cryptillionaire")
     time.sleep(0.4)
     print("Available Choices:")
