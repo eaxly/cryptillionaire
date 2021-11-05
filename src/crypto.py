@@ -3,34 +3,104 @@ from bs4 import BeautifulSoup
 
 # NOTE(axolotl): the '-> str' at the end of each function specifies that this function returns a string.
 
+url = ""
+price = ""
+
 def bitcoin_price() -> str:
-    url_btc = "https://coinmarketcap.com/currencies/bitcoin/markets/"
-    req = requests.get(url_btc)
+    url = "https://coinmarketcap.com/currencies/bitcoin/markets/"
+    req = requests.get(url)
     soup = BeautifulSoup(req.content, 'html.parser')
-    price_btc = soup.find("div", {"class": "priceValue"})
+    price = soup.find("div", {"class": "priceValue"})
     
-    return price_btc.text
+    return price.text
 
 def ethereum_price() -> str:
-    url_eth = "https://coinmarketcap.com/currencies/ethereum/"
-    req = requests.get(url_eth)
+    url = "https://coinmarketcap.com/currencies/ethereum/"
+    req = requests.get(url)
     soup = BeautifulSoup(req.content, 'html.parser')
-    price_eth = soup.find("div", {"class": "priceValue"})
+    price = soup.find("div", {"class": "priceValue"})
 
-    return price_eth.text
+    return price.text
 
 def binance_price() -> str:
-    url_bnb = "https://coinmarketcap.com/currencies/binance-coin/"
-    req = requests.get(url_bnb)
+    url = "https://coinmarketcap.com/currencies/binance-coin/"
+    req = requests.get(url)
     soup = BeautifulSoup(req.content, 'html.parser')
-    price_bnb = soup.find("div", {"class": "priceValue"})
+    price = soup.find("div", {"class": "priceValue"})
 
-    return price_bnb.text
+    return price.text
 
 def tether_price() -> str:
-    url_usdt = "https://coinmarketcap.com/currencies/tether/"
-    req = requests.get(url_usdt)
+    url = "https://coinmarketcap.com/currencies/tether/"
+    req = requests.get(url)
     soup = BeautifulSoup(req.content, 'html.parser')
     price_usdt = soup.find("div", {"class": "priceValue"})
 
-    return price_usdt.text
+    return price.text
+
+def dogecoin_price() -> str:
+    url = "https://coinmarketcap.com/currencies/dogecoin/"
+    req = requests.get(url)
+    soup = BeautifulSoup(req.content, 'html.parser')
+    price = soup.find("div", {"class": "priceValue"})
+
+    return price.text
+
+def bitrise_price() -> str:
+    url_bitrise = "https://coinmarketcap.com/currencies/bitrise-token/"
+    req = requests.get(url_bitrise)
+    soup = BeautifulSoup(req.content, 'html.parser')
+    price_bitrise = soup.find("div", {"class": "priceValue"})
+
+    return price.text
+
+def micropets_price() -> str:
+    url = "https://coinmarketcap.com/currencies/micropets/"
+    req = requests.get(url)
+    soup = BeautifulSoup(req.content, 'html.parser')
+    price = soup.find("div", {"class": "priceValue"})
+
+    return price.text
+
+def shibazilla_price() -> str:
+    url_ = "https://coinmarketcap.com/currencies/shibazilla/"
+    req = requests.get(url)
+    soup = BeautifulSoup(req.content, 'html.parser')
+    price = soup.find("div", {"class": "priceValue"})
+
+    return price.text
+
+def cardano_price() -> str:
+    url_ = "https://coinmarketcap.com/currencies/cardano/"
+    req = requests.get(url)
+    soup = BeautifulSoup(req.content, 'html.parser')
+    price = soup.find("div", {"class": "priceValue"})
+
+    return price.text
+
+def xrp_price() -> str:
+    url_ = "https://coinmarketcap.com/currencies/xrp/"
+    req = requests.get(url)
+    soup = BeautifulSoup(req.content, 'html.parser')
+    price = soup.find("div", {"class": "priceValue"})
+
+    return price.text
+
+def stellar_price() -> str:
+    url_ = "https://coinmarketcap.com/currencies/stellar/"
+    req = requests.get(url)
+    soup = BeautifulSoup(req.content, 'html.parser')
+    price = soup.find("div", {"class": "priceValue"})
+
+    return price.text
+
+def sushiswap_price() -> str:
+    url_ = "https://coinmarketcap.com/currencies/sushiswap/"
+    req = requests.get(url)
+    soup = BeautifulSoup(req.content, 'html.parser')
+    price = soup.find("div", {"class": "priceValue"})
+
+    return price.text
+
+
+
