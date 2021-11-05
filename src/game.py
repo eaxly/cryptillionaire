@@ -10,7 +10,7 @@ console = Console()
 
 
 # if this is showing a warning, ignore it, this is a pylance/vscode issue
-# the program runs fine! \__(· _ · )__/
+# the program runs fine! \__(· _ · )__/*
 from str2float import str2float
 import filer
 
@@ -237,6 +237,8 @@ def buy_crypto():
         tether_owned = filer.read_file(p_tether)
     elif filer.filing(p_tether, create_file=True):
         tether_owned = filer.read_file(p_tether)
+        file = open(p_tether, 'w')
+        file.write("0.0")
 
     buy_choice = input(": ")
 
@@ -263,7 +265,7 @@ def buy_crypto():
     elif buy_choice == "4":
         price_crypto = crypto.tether_price()
         buying_name = "Tether"
-        buying = tether_owned
+        buying = (tether_owned)
         save_file_buy = saves_path_main + "tether.txt"
     else:
         console.print("[red on white]Selection not Valid![/]")
@@ -304,7 +306,7 @@ def buy_crypto():
         f_money_buy.close()
 
         crypto_add_buy = open(save_file_buy, "w")
-        crypto_add_buy.write(str(float(buy_amount) + float(buying)))
+        crypto_add_buy.write(str(float(buy_amount) + str2float(buying)))
         crypto_add_buy.close()
         print("Buy Process Succedeed! \n Exiting to Main Menu!")
 
