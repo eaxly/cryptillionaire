@@ -74,18 +74,65 @@ def show_crypto():
     print("Tether: ")
     console.print(f"[bold underline]{crypto.tether_price()}[/]\n")
 
+    #DogeCoin Stats
+    print("DogeCoin: ")
+    console.print(f"[bold underline]{crypto.dogecoin_price()}[/]\n")
+
+    #Bitrise Stats
+    print("Bitrise: ")
+    console.print(f"[bold underline]{crypto.bitrise_price()}[/]\n")
+
+    #Micropets Stats
+    print("Mircopets: ")
+    console.print(f"[bold underline]{crypto.micropets_price()}[/]\n")
+    
+    #Shibazilla Stats
+    print("Shibazilla: ")
+    console.print(f"[bold underline]{crypto.shibazilla_price()}[/]\n")
+
+    #Cardano Stats
+    print("Cardano: ")
+    console.print(f"[bold underline]{crypto.cardano_price()}[/]\n")
+
+    #XRP Stats
+    print("XRP: ")
+    console.print(f"[bold underline]{crypto.xrp_price()}[/]\n")
+
+    #Stellar Stats
+    print("Stellar: ")
+    console.print(f"[bold underline]{crypto.stellar_price()}[/]\n")
+
+    #Sushiswap Stats
+    print("Sushiswap: ")
+    console.print(f"[bold underline]{crypto.sushiswap_price()}[/]\n")
+
+
+
+
+
+
+
 
 def sell_crypto():
     print("What Crypto do you want to sell?")
     time.sleep(1)
     # uglyyyyyyy
     # we need to create the variables so that they don't go out of scope in the statements below ↓
-    btc_owned, eth_owned, binance_owned, tether_owned = "","","",""
+    btc_owned, eth_owned, binance_owned, tether_owned, doge_owned, bitrise_owned, micropets_owned, shibazilla_owned, cardano_owned, xrp_owned, stellar_owned, sushiswap_owned = "", "", "", "", "", "", "", "", "", "", "", ""
 
     p_btc = saves_path_main + "bitcoin.txt"
     p_eth = saves_path_main + "ethereum.txt"
     p_binance = saves_path_main + "binance.txt"
     p_tether = saves_path_main + "tether.txt"
+    p_doge = saves_path_main + "tether.txt"
+    p_bitrise = saves_path_main + "bitrise.txt"
+    p_micropets = saves_path_main + "micropets.txt"
+    p_shibazilla = saves_path_main + "shibazilla.txt"
+    p_cardano = saves_path_main + "cardano.txt"
+    p_xrp = saves_path_main + "xrp.txt"
+    p_stellar = saves_path_main + "stellar.txt"
+    p_sushiswap = saves_path_main + "sushiswap.txt"
+
 
     # ik very ugly but it should work
     if filer.filing(p_btc):
@@ -108,6 +155,53 @@ def sell_crypto():
     elif filer.filing(p_tether, create_file=True):
         tether_owned = filer.read_file(p_tether)
 
+    
+    if filer.filing(p_doge):
+        doge_owned = filer.read_file(p_doge)
+    elif filer.filing(p_doge, create_file=True):
+        micropets_owned = filer.read_file(p_doge)
+
+    if filer.filing(p_bitrise):
+        bitrise_owned = filer.read_file(p_bitrise)
+    elif filer.filing(p_doge, create_file=True):
+        bitrise_owned = filer.read_file(p_bitrise)
+    
+    if filer.filing(p_micropets):
+        micropets_owned = filer.read_file(p_micropets)
+    elif filer.filing(p_micropets, create_file=True):
+        micropets_owned = filer.read_file(p_micropets)
+
+    
+    if filer.filing(p_shibazilla):
+        shibazilla_owned = filer.read_file(p_shibazilla)
+    elif filer.filing(p_shibazilla, create_file=True):
+        shibazilla_owned = filer.read_file(p_shibazilla)
+
+    
+    if filer.filing(p_cardano):
+        cardano_owned = filer.read_file(p_cardano)
+    elif filer.filing(p_cardano, create_file=True):
+        cardano_owned = filer.read_file(p_cardano)
+
+    
+    if filer.filing(p_xrp):
+        xrp_owned = filer.read_file(p_xrp)
+    elif filer.filing(p_xrp, create_file=True):
+        xrp_owned = filer.read_file(p_xrp)
+
+    
+    if filer.filing(p_stellar):
+        stellar_owned = filer.read_file(p_stellar)
+    elif filer.filing(p_stellar, create_file=True):
+        stellar_owned = filer.read_file(p_stellar)
+
+    
+    if filer.filing(p_sushiswap):
+        sushiswap_owned = filer.read_file(p_sushiswap)
+    elif filer.filing(p_sushiswap, create_file=True):
+        sushiswap_owned = filer.read_file(p_sushiswap)
+
+
     print("1. Bitcoin:")
     print(f"Owned: [underline]{btc_owned}[/]\n")
 
@@ -120,6 +214,30 @@ def sell_crypto():
     print("4. Tether:")
     print(f"Owned: [underline]{tether_owned}[/]\n")
 
+    print("4. Dogecoin:")
+    print(f"Owned: [underline]{doge_owned}[/]\n")
+
+    print("4. Bitrise:")
+    print(f"Owned: [underline]{bitrise_owned}[/]\n")
+
+    print("4. Micropets:")
+    print(f"Owned: [underline]{micropets_owned}[/]\n")
+
+    print("4. Shibazilla:")
+    print(f"Owned: [underline]{shibazilla_owned}[/]\n")
+
+    print("4. Cardano:")
+    print(f"Owned: [underline]{cardano_owned}[/]\n")
+
+    print("4. XRP:")
+    print(f"Owned: [underline]{xrp_owned}[/]\n")
+
+    print("4. Stellar:")
+    print(f"Owned: [underline]{stellar_owned}[/]\n")
+
+    print("4. Sushiswap:")
+    print(f"Owned: [underline]{sushiswap_owned}[/]\n")
+
     sell_choice = input(": ")
     selling_name = ""
     selling = ""
@@ -127,19 +245,52 @@ def sell_crypto():
     if sell_choice == "1":
         selling_name = "Bitcoin"
         selling = btc_owned
-        save_file_sell = saves_path_main + "bitcoin.txt"
+        save_file_sell = p_btc
     if sell_choice == "2":
         selling_name = "Ethereum"
         selling = eth_owned
-        save_file_sell = saves_path_main + "ethereum.txt"
+        save_file_sell = p_eth
     if sell_choice == "3":
         selling_name = "Binance"
         selling = binance_owned
-        save_file_sell = saves_path_main + "binance.txt"
+        save_file_sell = p_binance
     if sell_choice == "4":
         selling_name = "Tether"
         selling = tether_owned
-        save_file_sell = saves_path_main + "tether.txt"
+        save_file_sell = p_tether
+    if sell_choice == "5":
+        selling_name = "Dogecoin"
+        selling = doge_owned
+        save_file_sell = p_doge
+    if sell_choice == "6":
+        selling_name = "Bitrise"
+        selling = bitrise_owned
+        save_file_sell = p_bitrise
+    if sell_choice == "7":
+        selling_name = "Micropets"
+        selling = micropets_owned
+        save_file_sell = p_micropets
+    if sell_choice == "8":
+        selling_name = "Shibazilla"
+        selling = shibazilla_owned
+        save_file_sell = p_shibazilla
+    if sell_choice == "9":
+        selling_name = "Cardano"
+        selling = cardano_owned
+        save_file_sell = p_cardano
+    if sell_choice == "10":
+        selling_name = "XRP"
+        selling = xrp_owned
+        save_file_sell = p_xrp
+    if sell_choice == "11":
+        selling_name = "Stellar"
+        selling = stellar_owned
+        save_file_sell = p_stellar
+    if sell_choice == "12":
+        selling_name = "Sushiswap"
+        selling = sushiswap_owned
+        save_file_sell = p_sushiswap
+    
 
     time.sleep(2)
     print("Selected: " + selling_name + "\n" + "Owned: " + selling)
@@ -147,7 +298,7 @@ def sell_crypto():
     sell_amount = str2float(input(": "))
 
     # Removing Crypto from Account
-    # selling = float(selling) - float(sell_amount) <- what is this?!
+    # selling = float(selling) - float(sell_amount) <- what is this?! <- IDK, Dont ask me, ask Python.
     if float(selling) - float(sell_amount) < 0:
         console.print("[red on white]Not enough Crypto![/]")
         selling = float(selling) + float(sell_amount)
@@ -171,6 +322,22 @@ def sell_crypto():
             price_current_sell = str2float(crypto.binance_price())
         elif sell_choice == "4":
             price_current_sell = str2float(crypto.tether_price())
+        elif sell_choice == "5":
+            price_current_sell = str2float(crypto.dogecoin_price())
+        elif sell_choice == "6":
+            price_current_sell = str2float(crypto.bitrise_price())
+        elif sell_choice == "7":
+            price_current_sell = str2float(crypto.micropets_price())
+        elif sell_choice == "8":
+            price_current_sell = str2float(crypto.shibazilla_price())
+        elif sell_choice == "9":
+            price_current_sell = str2float(crypto.cardano_price())
+        elif sell_choice == "10":
+            price_current_sell = str2float(crypto.xrp_price())
+        elif sell_choice == "11":
+            price_current_sell = str2float(crypto.stellar_price())
+        elif sell_choice == "12":
+            price_current_sell = str2float(crypto.sushiswap_price())
 
 
         money_adding_sell = price_current_sell * sell_amount
@@ -208,14 +375,37 @@ def buy_crypto():
     console.print(f"Price: [underline]{crypto.binance_price()}[/]")
     print("4. Tether")
     console.print(f"Price: [underline]{crypto.tether_price()}[/]")
+    print("5. Dogecoin")
+    console.print(f"Price: [underline]{crypto.tether_price()}[/]")
+    print("6. Bitrise")
+    console.print(f"Price: [underline]{crypto.tether_price()}[/]")
+    print("7. Micropets")
+    console.print(f"Price: [underline]{crypto.tether_price()}[/]")
+    print("8. Shibazilla")
+    console.print(f"Price: [underline]{crypto.tether_price()}[/]")
+    print("9. Cardano")
+    console.print(f"Price: [underline]{crypto.tether_price()}[/]")
+    print("10. XRP")
+    console.print(f"Price: [underline]{crypto.tether_price()}[/]")
+    print("11. Stellar")
+    console.print(f"Price: [underline]{crypto.tether_price()}[/]")
+    print("12. Sushiswap")
+    console.print(f"Price: [underline]{crypto.tether_price()}[/]")
 
-
-    btc_owned, eth_owned, binance_owned, tether_owned = "","","",""
+    btc_owned, eth_owned, binance_owned, tether_owned, doge_owned, bitrise_owned, micropets_owned, shibazilla_owned, cardano_owned, xrp_owned, stellar_owned, sushiswap_owned = "", "", "", "", "", "", "", "", "", "", "", ""
 
     p_btc = saves_path_main + "bitcoin.txt"
     p_eth = saves_path_main + "ethereum.txt"
     p_binance = saves_path_main + "binance.txt"
     p_tether = saves_path_main + "tether.txt"
+    p_doge = saves_path_main + "tether.txt"
+    p_bitrise = saves_path_main + "bitrise.txt"
+    p_micropets = saves_path_main + "micropets.txt"
+    p_shibazilla = saves_path_main + "shibazilla.txt"
+    p_cardano = saves_path_main + "cardano.txt"
+    p_xrp = saves_path_main + "xrp.txt"
+    p_stellar = saves_path_main + "stellar.txt"
+    p_sushiswap = saves_path_main + "sushiswap.txt"
 
     # ik very ugly but it should work x2
     if filer.filing(p_btc):
@@ -237,8 +427,52 @@ def buy_crypto():
         tether_owned = filer.read_file(p_tether)
     elif filer.filing(p_tether, create_file=True):
         tether_owned = filer.read_file(p_tether)
-        file = open(p_tether, 'w')
-        file.write("0.0")
+
+    
+    if filer.filing(p_doge):
+        doge_owned = filer.read_file(p_doge)
+    elif filer.filing(p_doge, create_file=True):
+        micropets_owned = filer.read_file(p_doge)
+
+    if filer.filing(p_bitrise):
+        bitrise_owned = filer.read_file(p_bitrise)
+    elif filer.filing(p_doge, create_file=True):
+        bitrise_owned = filer.read_file(p_bitrise)
+    
+    if filer.filing(p_micropets):
+        micropets_owned = filer.read_file(p_micropets)
+    elif filer.filing(p_micropets, create_file=True):
+        micropets_owned = filer.read_file(p_micropets)
+
+    
+    if filer.filing(p_shibazilla):
+        shibazilla_owned = filer.read_file(p_shibazilla)
+    elif filer.filing(p_shibazilla, create_file=True):
+        shibazilla_owned = filer.read_file(p_shibazilla)
+
+    
+    if filer.filing(p_cardano):
+        cardano_owned = filer.read_file(p_cardano)
+    elif filer.filing(p_cardano, create_file=True):
+        cardano_owned = filer.read_file(p_cardano)
+
+    
+    if filer.filing(p_xrp):
+        xrp_owned = filer.read_file(p_xrp)
+    elif filer.filing(p_xrp, create_file=True):
+        xrp_owned = filer.read_file(p_xrp)
+
+    
+    if filer.filing(p_stellar):
+        stellar_owned = filer.read_file(p_stellar)
+    elif filer.filing(p_stellar, create_file=True):
+        stellar_owned = filer.read_file(p_stellar)
+
+    
+    if filer.filing(p_sushiswap):
+        sushiswap_owned = filer.read_file(p_sushiswap)
+    elif filer.filing(p_sushiswap, create_file=True):
+        sushiswap_owned = filer.read_file(p_sushiswap)
 
     buy_choice = input(": ")
 
@@ -251,22 +485,62 @@ def buy_crypto():
         price_crypto = crypto.bitcoin_price() 
         buying_name = "Bitcoin"
         buying = btc_owned
-        save_file_buy = saves_path_main + "bitcoin.txt"
+        save_file_buy = p_btc
     elif buy_choice == "2":
         price_crypto = crypto.ethereum_price()
         buying_name = "Ethereum"
         buying = eth_owned
-        save_file_buy = saves_path_main + "ethereum.txt"
+        save_file_buy = p_eth
     elif buy_choice == "3":
         price_crypto = crypto.binance_price()
         buying_name = "Binance"
         buying = binance_owned
-        save_file_buy = saves_path_main + "binance.txt"
+        save_file_buy = p_binance
     elif buy_choice == "4":
         price_crypto = crypto.tether_price()
         buying_name = "Tether"
         buying = (tether_owned)
-        save_file_buy = saves_path_main + "tether.txt"
+        save_file_buy = p_eth
+    elif buy_choice == "5":
+        price_crypto = crypto.dogecoin_price()
+        buying_name = "Dogecoin"
+        buying = (doge_owned)
+        save_file_buy = p_doge
+    elif buy_choice == "6":
+        price_crypto = crypto.bitrise_price()
+        buying_name = "Bitrise"
+        buying = (bitrise_owned)
+        save_file_buy = p_bitrise
+    elif buy_choice == "7":
+        price_crypto = crypto.micropets_price()
+        buying_name = "Micropets"
+        buying = (micropets_owned)
+        save_file_buy = p_micropets
+    elif buy_choice == "8":
+        price_crypto = crypto.shibazilla_price()
+        buying_name = "Shibazilla"
+        buying = (shibazilla_owned)
+        save_file_buy = p_shibazilla
+    elif buy_choice == "9":
+        price_crypto = crypto.cardano_price()
+        buying_name = "Cardano"
+        buying = (cardano_owned)
+        save_file_buy = p_cardano
+    elif buy_choice == "10":
+        price_crypto = crypto.xrp_price()
+        buying_name = "XRP"
+        buying = (xrp_owned)
+        save_file_buy = p_xrp
+    elif buy_choice == "11":
+        price_crypto = crypto.stellar_price()
+        buying_name = "Stellar"
+        buying = (stellar_owned)
+        save_file_buy = p_stellar
+    elif buy_choice == "12":
+        price_crypto = crypto.sushiswap_price()
+        buying_name = "Sushiswap"
+        buying = (sushiswap_owned)
+        save_file_buy = p_sushiswap
     else:
         console.print("[red on white]Selection not Valid![/]")
         time.sleep(1)
