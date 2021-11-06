@@ -34,7 +34,7 @@ def tether_price() -> str:
     url = "https://coinmarketcap.com/currencies/tether/"
     req = requests.get(url)
     soup = BeautifulSoup(req.content, 'html.parser')
-    price_usdt = soup.find("div", {"class": "priceValue"})
+    price = soup.find("div", {"class": "priceValue"})
 
     return price.text
 
@@ -47,10 +47,10 @@ def dogecoin_price() -> str:
     return price.text
 
 def bitrise_price() -> str:
-    url_bitrise = "https://coinmarketcap.com/currencies/bitrise-token/"
-    req = requests.get(url_bitrise)
+    url = "https://coinmarketcap.com/currencies/bitrise-token/"
+    req = requests.get(url)
     soup = BeautifulSoup(req.content, 'html.parser')
-    price_bitrise = soup.find("div", {"class": "priceValue"})
+    price = soup.find("div", {"class": "priceValue"})
 
     return price.text
 
@@ -63,7 +63,7 @@ def micropets_price() -> str:
     return price.text
 
 def shibazilla_price() -> str:
-    url_ = "https://coinmarketcap.com/currencies/shibazilla/"
+    url = "https://coinmarketcap.com/currencies/shibazilla/"
     req = requests.get(url)
     soup = BeautifulSoup(req.content, 'html.parser')
     price = soup.find("div", {"class": "priceValue"})
@@ -71,7 +71,7 @@ def shibazilla_price() -> str:
     return price.text
 
 def cardano_price() -> str:
-    url_ = "https://coinmarketcap.com/currencies/cardano/"
+    url = "https://coinmarketcap.com/currencies/cardano/"
     req = requests.get(url)
     soup = BeautifulSoup(req.content, 'html.parser')
     price = soup.find("div", {"class": "priceValue"})
@@ -79,7 +79,7 @@ def cardano_price() -> str:
     return price.text
 
 def xrp_price() -> str:
-    url_ = "https://coinmarketcap.com/currencies/xrp/"
+    url = "https://coinmarketcap.com/currencies/xrp/"
     req = requests.get(url)
     soup = BeautifulSoup(req.content, 'html.parser')
     price = soup.find("div", {"class": "priceValue"})
@@ -87,7 +87,7 @@ def xrp_price() -> str:
     return price.text
 
 def stellar_price() -> str:
-    url_ = "https://coinmarketcap.com/currencies/stellar/"
+    url = "https://coinmarketcap.com/currencies/stellar/"
     req = requests.get(url)
     soup = BeautifulSoup(req.content, 'html.parser')
     price = soup.find("div", {"class": "priceValue"})
@@ -95,7 +95,7 @@ def stellar_price() -> str:
     return price.text
 
 def sushiswap_price() -> str:
-    url_ = "https://coinmarketcap.com/currencies/sushiswap/"
+    url = "https://coinmarketcap.com/currencies/sushiswap/"
     req = requests.get(url)
     soup = BeautifulSoup(req.content, 'html.parser')
     price = soup.find("div", {"class": "priceValue"})
