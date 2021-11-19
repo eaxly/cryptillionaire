@@ -56,6 +56,7 @@ def tutorial():
         f_history_setup = open(saves_path_main + "/history.txt", 'w+')
         f_history_setup.write(str(datetime.now()) + "  Installed Cryptillionaire \n" )
         f_history_setup.close()
+        mod_bootloader.register_mods()
         print("Please Restart your Game to let it finish setting up")
 
 
