@@ -1,0 +1,4 @@
+https://coinmarketcap.com/currencies/bitcoin/
+https://coinmarketcap.com/currencies/ethereum/
+https://coinmarketcap.com/currencies/binance-coin/
+https://coinmarketcap.com/currencies/dogecoin/
