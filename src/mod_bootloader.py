@@ -1,4 +1,3 @@
-import time
 import os
 from os import listdir
 from os.path import isfile, join
@@ -45,9 +44,9 @@ def register_mods():
         crypto_mod_name.write(crypto_mods_list[0])
         crypto_price_link.write(crypto_mods_list[1] + "\n")
         count = count + 1
-    first_modfile.close()
-    crypto_mod_name.close()
-    crypto_price_link.close()
+        first_modfile.close()
+        crypto_mod_name.close()
+        crypto_price_link.close()
 
 def dictionary_links(mod_index):
     crypto_price_link = open(mod_storage_dir + "/crypto_price_links.txt", 'r')
