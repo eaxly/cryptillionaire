@@ -1,7 +1,7 @@
 import time
-import sys
+# import sys
 import os
-from typing import Counter
+# from typing import Counter
 import crypto
 from datetime import datetime
 # rich libaries
@@ -72,6 +72,7 @@ def show_crypto():
 def sell_crypto():
     count2 = 0
     crypto_owned = ""
+    p_file=""
     print("What Crypto do you want to sell?")
     while mods_installed > count2:
         crypto_name = str(mod_bootloader.dictionary_names(count2))
@@ -96,7 +97,6 @@ def sell_crypto():
     save_file_sell = ""
 
     if mods_installed > int(sell_choice):
-        
         selling_name = mod_bootloader.dictionary_names(int(sell_choice))
         selling_name = str(selling_name).replace("\n", "")
         save_file_sell = saves_path_main + str(selling_name).lower()
@@ -163,6 +163,7 @@ def show_history():
 def buy_crypto():
     count3 = 0
     crypto_owned = ""
+    p_file=""
     print("What Crypto do you want to sell?")
     while mods_installed > count3:
         crypto_name = str(mod_bootloader.dictionary_names(count3))
