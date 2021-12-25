@@ -22,31 +22,56 @@ def init():
     filer.filing(mod_storage_dir + "/crypto_names.txt", create_file=True)
     filer.filing(mod_storage_dir + "/crypto_price_links.txt", create_file=True)
     filer.filing(modloader_dir + "/initFlag", create_file=True)
+    os.mkdir(modloader_dir + "/mods")
 
 def register_mods():
     flush_mod_storage()
     count = 0
     modfiles = [f for f in listdir(modfolder) if isfile(join(modfolder, f))]
     mods_count = len(modfiles)
-    while mods_count > count:
-        first_modfile = open(modfolder + "/" + modfiles[count], 'r')
-        first_modfile_read = first_modfile.readlines()
 
+    # Addng Default Mods:
+    crypto_mod_name = open(mod_storage_dir + "/crypto_names.txt", 'a')
+    crypto_price_link = open(mod_storage_dir + "/crypto_price_links.txt", 'a')
+    crypto_mod_name.write("Bitcoin" + "\n")
+    crypto_price_link.write("https://coinmarketcap.com/currencies/bitcoin/" + "\n")
+    crypto_mod_name.write("Ethereum" + "\n")
+    crypto_price_link.write("https://coinmarketcap.com/currencies/ethereum/" + "\n")
+    crypto_mod_name.write("Binance" + "\n")
+    crypto_price_link.write("https://coinmarketcap.com/currencies/binance-coin/" + "\n")
+    crypto_mod_name.write("Dogecoin" + "\n")
+    crypto_price_link.write("https://coinmarketcap.com/currencies/dogecoin/" + "\n")
+    crypto_mod_name.close()
+    crypto_price_link.close()
+    while mods_count > count:
+        old_crypto_names_list = []
+
+
+
+        # Reading all Mods that are already in the crypto_names.txt file (Duplicate Detection)
+        old_crypto_names = open(mod_storage_dir + "/crypto_names.txt", 'r')
+        old_crypto_names_read = old_crypto_names.readlines()
+        for line in old_crypto_names_read:
+            old_crypto_names_list.append(line)
+        old_crypto_names.close()
         crypto_mod_name = open(mod_storage_dir + "/crypto_names.txt", 'a')
         crypto_price_link = open(mod_storage_dir + "/crypto_price_links.txt", 'a')
-
-
+        first_modfile = open(modfolder + "/" + modfiles[count], 'r')
+        first_modfile_read = first_modfile.readlines()
+        
         crypto_mods_list = []
 
         for line in first_modfile_read:
             crypto_mods_list.append(line)
-
-        crypto_mod_name.write(crypto_mods_list[0])
-        crypto_price_link.write(crypto_mods_list[1] + "\n")
+        if old_crypto_names_list.count(crypto_mods_list[0]) > 0 :
+            print(f"Duplicate Mod Found! --> Skipping: {crypto_mods_list[0]}")
+        else:
+            crypto_mod_name.write(crypto_mods_list[0])
+            crypto_price_link.write(crypto_mods_list[1] + "\n")
+            first_modfile.close()
+            crypto_mod_name.close()
+            crypto_price_link.close()
         count = count + 1
-        first_modfile.close()
-        crypto_mod_name.close()
-        crypto_price_link.close()
 
 def dictionary_links(mod_index):
     crypto_price_link = open(mod_storage_dir + "/crypto_price_links.txt", 'r')
